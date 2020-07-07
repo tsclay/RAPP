@@ -1,0 +1,17 @@
+Header add Access-Control-Allow-Origin: "http://localhost:3000"
+Header add Access-Control-Allow-Headers: "Content-Type"
+Header set Access-Control-Allow-Methods: "GET,POST,OPTIONS,DELETE,PUT"
+
+RewriteEngine On
+
+RewriteCond %{REQUEST_METHOD} ^GET$
+RewriteRule ^people$ controllers/people.php?action=index
+
+RewriteCond %{REQUEST_METHOD} ^POST$
+RewriteRule ^people$ controllers/people.php?action=create
+
+RewriteCond %{REQUEST_METHOD} ^PUT$
+RewriteRule ^people/([0-9]+)$ controllers/people.php?action=update&id=$1
+
+RewriteCond %{REQUEST_METHOD} ^DELETE$
+RewriteRule ^people/([0-9]+)$ controllers/people.php?action=delete&id=$1

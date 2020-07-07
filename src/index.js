@@ -1,11 +1,13 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import App from './App';
+import HelloMessage from './HelloMessage';
+import PersonForm from './PersonForm'
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <HelloMessage />
+    <PersonForm/>
   </React.StrictMode>,
   document.getElementById('root')
 );

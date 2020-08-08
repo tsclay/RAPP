@@ -1,3 +1,6 @@
+# React's Build dir
+build/
+
 # Logs
 logs
 *.log

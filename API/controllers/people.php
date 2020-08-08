@@ -2,10 +2,13 @@
 header('Content-Type: application/json');
 include_once __DIR__ . '/../models/person.php';
 
+// GET route for showing all rows in table
 if($_REQUEST['action'] === 'index'){
     $all_people = People::all();
     echo json_encode($all_people);
-} else if ($_REQUEST['action'] === 'create'){
+} 
+// POST route for creating new people
+else if ($_REQUEST['action'] === 'create'){
     $request_body = file_get_contents('php://input');
     $body_object = json_decode($request_body);
 
@@ -13,7 +16,9 @@ if($_REQUEST['action'] === 'index'){
     $all_people = People::create($new_person);
 
     echo json_encode($all_people);
-} else if ($_REQUEST['action'] === 'update'){
+} 
+// PUT route for updating a person in database
+else if ($_REQUEST['action'] === 'update'){
     $request_body = file_get_contents('php://input');
     $body_object = json_decode($request_body);
 
@@ -21,8 +26,9 @@ if($_REQUEST['action'] === 'index'){
     $all_people = People::update($updated_person);
 
     echo json_encode($all_people);
-} else if($_REQUEST['action'] === 'delete'){
+} 
+// DELETE route for deleting a person from database
+else if($_REQUEST['action'] === 'delete'){
     $all_people = People::delete($_REQUEST["id"]);
     echo json_encode($all_people);
 }
-?>

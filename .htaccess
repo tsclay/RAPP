@@ -4,24 +4,19 @@ Header set Access-Control-Allow-Methods: "GET,POST,OPTIONS,DELETE,PUT"
 
 RewriteEngine On
 
+# Reserved for the React build => PRODUCTION
 RewriteCond %{REQUEST_METHOD} ^GET$
-RewriteRule ^$ build/index.html
+RewriteRule ^home$ build/index.html
 
-#RewriteCond %{REQUEST_METHOD} ^GET$
-#RewriteRule ^static/css/main\.5f361e03\.chunk\.css$ build/static/css/main\.5f361e03\.chunk\.css
-
-#RewriteCond %{REQUEST_METHOD} ^GET$
-#RewriteRule ^static/js/2\.41ec9370\.chunk\.js$ build/static/js/2\.41ec9370\.chunk\.js
-
-#RewriteCond %{REQUEST_METHOD} ^GET$
-#RewriteRule ^static/js/main\.31247cc6\.chunk\.js$ build/static/js/main\.31247cc6\.chunk\.js
-
-#RewriteCond %{REQUEST_METHOD} ^GET$
-#RewriteRule ^static/js/main\.31247cc6\.chunk\.js$ build/static/js/main\.31247cc6\.chunk\.js
-
+# For the js and css assets when using React in PRODUCTION
 RewriteCond %{REQUEST_METHOD} ^GET$
 RewriteRule ^static/(.*)$ build/static/$1
 
+# Reserved for the React build => PRODUCTION
+RewriteCond %{REQUEST_METHOD} ^GET$
+RewriteRule ^dev$ public/index.html
+
+# API routes
 RewriteCond %{REQUEST_METHOD} ^GET$
 RewriteRule ^people$ API/controllers/people.php?action=index
 

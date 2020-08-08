@@ -2,15 +2,16 @@ import React from "react";
 import axios from 'axios'
 
 export default class PersonForm extends React.Component {
-  constructor() {
+  constructor(props) {
     super();
     this.state = {
       people: [],
     };
+    this.API_URL = props.API_URL
   }
 
   componentDidMount = (event) => {
-    axios.get("http://localhost:8888/people").then((response) => {
+    axios.get(this.API_URL).then((response) => {
       this.setState({
         people: response.data,
       });
@@ -20,7 +21,7 @@ export default class PersonForm extends React.Component {
   createPerson = (event) => {
     event.preventDefault();
     axios
-      .post("http://localhost:8888/people", {
+      .post(this.API_URL, {
         name: this.state.newPersonName,
         age: this.state.newPersonAge,
       })
@@ -35,7 +36,7 @@ export default class PersonForm extends React.Component {
   updatePerson = async (e) => {
     e.preventDefault();
     const id = e.target.getAttribute("id");
-    const response = await axios.put(`http://localhost:8888/people/${id}`, {
+    const response = await axios.put(`${this.API_URL}/${id}`, {
       name: this.state.updatePersonName,
       age: this.state.updatePersonAge,
     });
@@ -43,7 +44,7 @@ export default class PersonForm extends React.Component {
   };
 
   deletePerson = async (e) => {
-    const response = await axios.delete(`http://localhost:8888/people/${e.target.value}`);
+    const response = await axios.delete(`${this.API_URL}/${e.target.value}`);
     console.log(response.data);
     this.setState({ people: response.data });
   };

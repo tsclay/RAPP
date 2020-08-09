@@ -5,7 +5,7 @@ import HelloMessage from './components/HelloMessage';
 import PersonForm from './components/PersonForm'
 
 // Change to not 'dev' when ready for production
-const ENV = "dev";
+const ENV = "prod";
 
 // API route that will change based on env setting
 // Add to these as necessary

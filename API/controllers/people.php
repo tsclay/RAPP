@@ -2,8 +2,6 @@
 header('Content-Type: application/json');
 include_once __DIR__ . '/../models/person.php';
 
-require('vendor/autoload.php');
-
 
 // GET route for showing all rows in table
 if ($_REQUEST['action'] === 'index') {

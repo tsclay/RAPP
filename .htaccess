@@ -8,10 +8,6 @@ RewriteEngine On
 RewriteCond %{REQUEST_METHOD} ^GET$
 RewriteRule ^static/(.*)$ build/static/$1
 
-# Reserved for the React build => PRODUCTION
-RewriteCond %{REQUEST_METHOD} ^GET$
-RewriteRule ^dev$ public/index.html
-
 # API routes
 RewriteCond %{REQUEST_METHOD} ^GET$
 RewriteRule ^people$ API/controllers/people.php?action=index

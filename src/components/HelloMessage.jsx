@@ -1,10 +1,9 @@
 import React from 'react';
-import '../App.css';
 
 function HelloMessage() {
   return (
-    <div className="App">
-      <h1>Hello world!</h1>
+    <div className="heading">
+      <h1>Hello, RAPP app!</h1>
     </div>
   );
 }

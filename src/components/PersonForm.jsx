@@ -75,8 +75,8 @@ export default class PersonForm extends React.Component {
 
   render = () => {
     return (
-      <div>
-        <h2>Create Person</h2>
+      <div className="container">
+        <h2>Add new person</h2>
         <form onSubmit={this.createPerson}>
           <input
             onKeyUp={this.changeNewPersonName}
@@ -90,9 +90,9 @@ export default class PersonForm extends React.Component {
             placeholder="age"
           />
           <br />
-          <input type="submit" value="Create Person" />
+          <button type="submit">CREATE</button>
         </form>
-        <h2>List of People</h2>
+        <h2>Contact List</h2>
         <ul>
           {this.state.people.map((person) => {
             return (

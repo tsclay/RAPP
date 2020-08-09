@@ -6,7 +6,7 @@ RewriteEngine On
 
 # Reserved for the React build => PRODUCTION
 RewriteCond %{REQUEST_METHOD} ^GET$
-RewriteRule ^home$ build/index.html
+RewriteRule ^$ build/index.html
 
 # For the js and css assets when using React in PRODUCTION
 RewriteCond %{REQUEST_METHOD} ^GET$

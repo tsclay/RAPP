@@ -7,7 +7,7 @@ This is a template for a project using the following tech stack:
 - PostgreSQL for database
 - PHP for server language
 
-**This guide will not discuss how to use React, PHP, LAMP/MAMP, PostgreSQL, and Apache outside of configuration.**
+**This guide is not a tutorial on how to use React, PHP, LAMP/MAMP, PostgreSQL, and Apache. This guide only covers configuration.**
 
 <br>
 
@@ -65,3 +65,39 @@ Because of this, our API routes for AJAX requests need to change depending on th
 ### Check out the index.js file
 
 <img src="./assets/index.js.png" alt="Whoops..." style="width: 700px; height: auto; display: block; margin: 0 auto;">
+
+<br>
+Lines 8-19 handle our environment switch. When you're ready to deploy the app, just change the value of ```ENV``` to be ```'prod'```. Again, the reason for this is that the Apache server will host both the React app that the client receives and the API/database combo for our full CRUD operations.
+
+## Customizing
+
+Change what you need! You can scrap the React components in this project and make your own. If you want to use functional components with React hooks, by all means, have at it!
+
+The code in the API directory? Scrap it too! As long as you understand how to use React and how to setup the back-end with PHP, :thumbsup:.
+
+## :thinking: Why? :thinking:
+ 
+ *Why do this when one could use Laravel which offers React front-end scaffolding?*
+
+ Laravel is robust, intuitive, and easy-to-use out of the box. However, it comes with some pain-points:
+  - **Time required to learn it.** If you visit the Laracasts site for Laravel, you'll number a large store of videos on using Laravel. Visit Laravel's site, and you'll find extensive and well-written documentation. While this is exciting, it shows that one could spend months learning the "ins and outs" of the framework.
+
+  - **Setting up and configuring a Laravel app** takes as much time as it does to create your app – sometimes more if you encounter errors during this phase.
+
+  - **Are you using authentication/authorization in your app?** If not, I believe you'll find yourself using a multi-featured power tool when all you needed was a hammer. (I hope this metaphor makes sense...) 
+
+  - **Laravel is secure by default when it comes to POST requests.** If your POST request doesn't include a CSRF token, then your request fails. Meaning, setting up POST requests in your forms require more work, especially when you're using React as your front-end instead of Blade templates, which handles this for you.
+
+  *Is security not important?*
+
+  Security is important. This template project can be as secure as you make. Again, this project is customizable. If you need security out of the box, then I highly recommend checking out Laravel.
+
+  *What's the gain of using this approach then?*
+
+  I believe there are two gains to this approach. 
+  
+  1. Learning how to write front-end and back-end code that interacts sensibly with each other. If you're familiar with using Node.js and Express, you'll recall that Express is unopinionated on what your sever needs to do. Again, it can be as secure as you want it to be. A framework such as Laravel is opinionated about elements such as authentication/authorization and database queries. What if you don't like those opinions?
+
+  2. The skills and insights taken from working with this can easily transfer to working with a framework such as Laravel.
+
+  **TL;DR: I believe using this template project will teach and reinforce concepts of full-stack development; it will not teach you how to memorize a framework's way of doing things... except React. Can't get away from memorizing some things about React.**

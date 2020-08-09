@@ -5,19 +5,18 @@ import HelloMessage from './components/HelloMessage';
 import PersonForm from './components/PersonForm'
 
 // Change to not 'dev' when ready for production
-// const ENV = "prod";
+const ENV = "prod";
 
 // API route that will change based on env setting
 // Add to these as necessary
-// let PEOPLE = '';
+let PEOPLE = '';
 
-// if (ENV === 'dev') {
-//   PEOPLE = "http://localhost:8888/people"
-// } else {
-//   PEOPLE = "/people";
-// }
+if (ENV === 'dev') {
+  PEOPLE = "http://localhost:8888/people"
+} else {
+  PEOPLE = "/people";
+}
 
-const PEOPLE = '/people'
 
 // If adding extra API routes, make sure to pass them down as props
 ReactDOM.render(

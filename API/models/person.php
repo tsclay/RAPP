@@ -1,5 +1,6 @@
 <?php
-$dbconn = pg_connect('host=localhost dbname=contacts');
+// $dbconn = pg_connect('host=localhost dbname=contacts');
+$dbconn = pg_connect(getenv("DATABASE_URL"));
 
 // Person class is a factory for creating new people
 class Person

@@ -67,13 +67,18 @@ Because of this, our API routes for AJAX requests need to change depending on th
 <img src="./assets/index.js.png" alt="Whoops..." style="width: 700px; height: auto; display: block; margin: 0 auto;">
 
 <br>
+
 Lines 8-19 handle our environment switch. When you're ready to deploy the app, just change the value of `ENV` to be `'prod'`. Again, the reason for this is that the Apache server will host both the React app that the client receives and the API/database combo for our full CRUD operations.
+
+<br>
 
 ## Customizing
 
 Change what you need! You can scrap the React components in this project and make your own. If you want to use functional components with React hooks, by all means, have at it!
 
 The code in the API directory? Scrap it too! As long as you understand how to use React and how to setup the back-end with PHP, :thumbsup:.
+
+<br>
 
 ## :thinking: Why? :thinking:
  

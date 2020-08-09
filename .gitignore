@@ -1,5 +1,4 @@
-# React's Build dir
-build/
+vendor/
 
 # Logs
 logs

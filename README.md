@@ -50,7 +50,7 @@ npm run start
 
 Upon success, your browser should load the localhost for the server. It should look something like this:
 
-<img src="./assets/hello.png" alt="Whoops..." style="width: 700px; height: auto; display: block; margin: 0 auto;">
+<img src="./assets/hello2.png" alt="Whoops..." style="width: 700px; height: auto; display: block; margin: 0 auto; border: 1px solid black">
 
 <br>
 

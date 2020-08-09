@@ -67,7 +67,7 @@ Because of this, our API routes for AJAX requests need to change depending on th
 <img src="./assets/index.js.png" alt="Whoops..." style="width: 700px; height: auto; display: block; margin: 0 auto;">
 
 <br>
-Lines 8-19 handle our environment switch. When you're ready to deploy the app, just change the value of ```ENV``` to be ```'prod'```. Again, the reason for this is that the Apache server will host both the React app that the client receives and the API/database combo for our full CRUD operations.
+Lines 8-19 handle our environment switch. When you're ready to deploy the app, just change the value of `ENV` to be `'prod'`. Again, the reason for this is that the Apache server will host both the React app that the client receives and the API/database combo for our full CRUD operations.
 
 ## Customizing
 

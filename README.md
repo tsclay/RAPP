@@ -18,7 +18,7 @@ This guide will walkthrough the setup process and deploying to Heroku. See a dep
    * [Getting Started](#-getting-started-)
    * [Database Setup](#-database-setup-)
    * [Pointing the MAMP server](#-pointing-the-mamp-server-)
-   * [Setup React](#tests)
+   * [Setup React](#-setup-react-)
    * [Caring for the Environment](#dependency)
        * [React](#check-out-the-indexjs-file)
        * [PHP](#php-this-or-that)

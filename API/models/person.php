@@ -1,14 +1,18 @@
 <?php
 
+// RECOMMENDED TO NOT CHANGE THESE LINES
 if (getenv("DATABASE_URL")) {
   $dbconn = pg_connect(getenv("DATABASE_URL"));
 } else {
+  // Only load the phpdotenv lib if on localhost
   require_once '../../vendor/autoload.php';
+
   $dotenv = Dotenv\Dotenv::createImmutable(__DIR__, '../../.env');
   $dotenv->load();
 
   $db = parse_url($_SERVER['DATABASE_URL']);
   $db["path"] = ltrim($db["path"], "/");
+
   $dbconn = pg_connect("host={$db["host"]} dbname={$db["path"]} port={$db["port"]} user={$db["user"]} password={$db["pass"]}");
 }
 

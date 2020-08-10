@@ -1,9 +1,5 @@
 <?php
 
-// Switch these depending on whether in development or production
-// $dbconn = pg_connect('host=localhost dbname=contacts');
-// $dbconn = pg_connect(getenv("DATABASE_URL"));
-
 if (getenv("DATABASE_URL")) {
   $dbconn = pg_connect(getenv("DATABASE_URL"));
 } else {

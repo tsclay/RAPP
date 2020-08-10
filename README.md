@@ -11,6 +11,29 @@ This guide will walkthrough the setup process and deploying to Heroku. See a dep
 
 <br>
 
+## Table of Contents
+
+<!--ts-->
+   * [TL;DR Setup](https://github.com/tsclay/RAPP/#-tldr-setup)
+   * [Getting Started](#-getting-started-)
+   * [Database Setup](#-database-setup-)
+   * [Pointing the MAMP server](#-pointing-the-mamp-server-)
+   * [Setup React](#tests)
+   * [Caring for the Environment](#dependency)
+       * [React](#check-out-the-indexjs-file)
+       * [PHP](#php-this-or-that)
+   * [Customizing](#-customizing-)
+   * [Deploying your App](#-deploying-your-app-)
+       * [React](#the-react-side)
+       * [PHP](#the-php-side)
+       * [Composer.json](#composerjson)
+       * [Database](#-database-add-on-)
+   * [Why use this?](#-why-use-this-)
+   * [Questions?](#-questions-quandaries-and-queries-)
+<!--te-->
+
+<br>
+
 ## ⏩ TL;DR Setup ⏩
 
 _I wonder if this can be automated..._
@@ -38,7 +61,7 @@ psql -f API/models/seed.sql
 npm run start
 ```
 
-Open `localhost:3000` and off you go! 🚀
+Open `localhost:3000` and off you go! Refer to Deploying your App when ready to deploy. 🚀
 
 <br>
 

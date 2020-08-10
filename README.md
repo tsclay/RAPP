@@ -9,8 +9,6 @@ This is a template for a project using the following tech stack:
 
 See a deployment of this sample app [here](https://sample-rapp.herokuapp.com/).
 
-**This guide is not a tutorial on how to use React, PHP, LAMP/MAMP, PostgreSQL, and Apache. This guide only covers configuration.**
-
 <br>
 
 ## ⏩ TL;DR Setup ⏩

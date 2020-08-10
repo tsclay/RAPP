@@ -13,7 +13,7 @@ See a deployment of this sample app [here](https://sample-rapp.herokuapp.com/).
 
 <br>
 
-## TL;DR Setup
+## ⏩ TL;DR Setup ⏩
 
 One day, this will be automated.
 
@@ -43,7 +43,7 @@ Open `localhost:3000` and off you go! 🚀
 
 <br>
 
-## Getting Started
+## 🎬 Getting Started 🎬
 
 In your terminal, navigate to where you would like the project to live, and type the following commands:
 
@@ -230,7 +230,7 @@ git commit -am 'please work'
 git push heroku master
 ```
 
-### Database
+### 💻 Database Add-On 💻
 
 The only thing left to do at this point is setup the add-on database, which you can do from your terminal! All you need is the command that opens the `psql` shell for the cloud database.
 

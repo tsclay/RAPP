@@ -13,9 +13,21 @@ See a deployment of this sample app [here](https://sample-rapp.herokuapp.com/).
 
 <br>
 
+## Getting Started
+
+In your terminal, navigate to where you would like the project to live, and type the following commands:
+
+```bash
+git clone https://github.com/tsclay/RAPP.git
+npm i
+composer install
+```
+
+<br>
+
 ## 💻 Database Setup 💻
 
-First, make sure PostgreSQL is installed on your machine. If it's not, install it [here](https://www.postgresql.org/download/).
+An installation of PostgreSQL is assumed. (_You know what they say about assumptions. Install it [here](https://www.postgresql.org/download/)._)
 
 Start up the database server. The command for this may differ based on your configuration. Refer to [these docs](https://www.postgresql.org/docs/9.1/server-start.html).
 
@@ -23,16 +35,22 @@ Start up the database server. The command for this may differ based on your conf
 postgres -D /usr/local/var/postgres/
 ```
 
-In a separate tab, run the seed file that will create a database called "contacts", connect to it, create a "people" table, and populate it. Run this command from inside the project root; otherwise, you'll need to type the absolute path to the seed file.
+In a separate tab, run the seed file from inside the project root; otherwise, you'll need to type the absolute path to the seed file.
 
 ```bash
 $: psql -f API/models/seed.sql
 > DROP DATABASE
+> DROP ROLE
+> CREATE ROLE
 > CREATE DATABASE
+> ALTER DATABASE
 > You are now connected to database "contacts" as user "YourUserName".
 > CREATE TABLE
+> ALTER TABLE
 > INSERT 0 4
 ```
+
+This also created a user named `rapp` with a password of `reactPHP`. This will be important for our database access.
 
 <br>
 
@@ -207,7 +225,7 @@ INSERT INTO people (name, age) VALUES
 
 ## 🤔 Why use this? 🤔
 
-#### TL;DR: I believe using this template project will teach and reinforce concepts of full-stack development. Framework or no framework, apps are as secure as the developer makes them.
+#### TL;DR: I believe using this template project will teach and reinforce concepts of full-stack development without deployment being a roadblock. Framework or no framework, apps are as secure as the developer makes them.
 
 _Why do this when one could use Laravel which offers React front-end scaffolding?_
 

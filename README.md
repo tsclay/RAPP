@@ -78,22 +78,36 @@ Lines 8-19 handle our environment switch. When you're ready to deploy the app, j
 On the PHP side, the only bit of environment dependent code is inside `API/models/person.php`.
 
 ```PHP
-<?php
+if (getenv("DATABASE_URL")) {
+  $dbconn = pg_connect(getenv("DATABASE_URL"));
+} else {
+  require_once '../../vendor/autoload.php';
 
-// Switch these depending on whether in development or production
-// $dbconn = pg_connect('host=localhost dbname=contacts');
-$dbconn = pg_connect(getenv("DATABASE_URL"));
+  $dotenv = Dotenv\Dotenv::createImmutable(__DIR__, '../../.env');
+  $dotenv->load();
+
+  $db = parse_url($_SERVER['DATABASE_URL']);
+  $db["path"] = ltrim($db["path"], "/");
+
+  $dbconn = pg_connect("host={$db["host"]} dbname={$db["path"]} port={$db["port"]} user={$db["user"]} password={$db["pass"]}");
+}
 ```
 
-Refer to the Heroku docs on [connecting to a PostgreSQL database in PHP](https://devcenter.heroku.com/articles/heroku-postgresql#connecting-in-php).
+While in development, the phpdotenv library will pull in your `.env` file and grab `DATABASE_URL` to use. This means you only need to change the database info in your `.env` file. On Heroku, the `getenv()` method will work. Btw, if you're wondering why not use phpdotenv for both, it doesn't play nice with `getenv()`. Refer to [this issue](https://github.com/vlucas/phpdotenv/issues/446) in the phpdotenv repo.
+
+Given this, it is **recommended to not change this bit of code unless you want to debug deployment issues for hours.**
+
+Refer to the Heroku docs on [connecting to a PostgreSQL database in PHP](https://devcenter.heroku.com/articles/heroku-postgresql#connecting-in-php) for more info if needed.
 
 <br>
 
 ## 😎 Customizing 😎
 
-Change what you need! You can scrap the React components in this project and make your own. If you want to use functional components with React hooks, by all means, have at it!
+Other than the necessary bits, change what you need! You can scrap the React components in this project and make your own. If you want to use functional components with React hooks, by all means, have at it!
 
 The code in the API directory? Scrap it too! As long as you understand how to use React and how to setup the back-end with PHP, :thumbsup:.
+
+Ultimately, you can focus on functionality, UI, UX, and security without worrying about deployment.
 
 <br>
 
@@ -125,6 +139,8 @@ RewriteCond %{REQUEST_METHOD} ^GET$
 RewriteRule ^$ build/index.html
 ```
 
+### Composer.json
+
 Brief sidebar: Take a look at the `composer.json` file:
 
 ```json
@@ -136,16 +152,20 @@ Brief sidebar: Take a look at the `composer.json` file:
   },
   "require": {
     "php": "7.4.2"
+  },
+  "require-dev": {
+    "vlucas/phpdotenv": "^5.1"
   }
 }
 ```
 
-Two things about this file:
+Three things about this file:
 
 1. **You must have this file to deploy a PHP app to Heroku**, even if it is blank. The presence of this file in your root is enough to tell Heroku you intend to use PHP. Otherwise, Heroku will assume Node since there is a `package.json` file present.
-2. The code in the file basically means, "Hey, we want to use PHP 7.4.2 for this application". If the version isn't specified, Heroku will pick 7.1.0, which is too low a version for this project. You can change this to be whichever version you need.
+2. You can change which version of PHP you wish to use. *Change this with caution.*
+3. The phpdotenv library is only needed when were working locally. Once we push to Heroku, we don't need it, as Heroku will give our app the `DATABASE_URL`.
 
-Run ```composer update``` from the project root in your terminal. This will create a `vendor` directory for your project, indicating that it worked. You won't need this in deployment, as Heroku will install one for you. It is already included in the `gitignore`.
+Run ```composer install``` from the project root in your terminal. This will create a `vendor` directory for your project, indicating that it worked. You won't need this in deployment, as Heroku will install one for you. It is already included in the `gitignore`.
 
   - If you change the PHP version in the `composer.json` file, delete the `vendor` directory and re-run ```composer update```.
 
@@ -157,6 +177,8 @@ git commit -am 'please work'
 git push heroku master
 ```
 
+### Database
+
 The only thing left to do at this point is setup the add-on database, which you can do from your terminal! All you need is the command that opens the `psql` shell for the cloud database. 
 
 Check the following GIF on how to get that command:
@@ -165,7 +187,18 @@ Check the following GIF on how to get that command:
 
 <br>
 
-Once inside, you can copy/paste the code from the `seed.sql` file to seed your database.
+Once inside, you can seed the database with a table and values.
+
+```SQL
+CREATE TABLE people
+(id SERIAL, name VARCHAR(255), age INT);
+
+INSERT INTO people (name, age) VALUES
+('Bobby', 45),
+('Thomas', 37),
+('Jo', 18),
+('Samantha', 25);
+```
 
 <br>
 
@@ -204,4 +237,3 @@ Once inside, you can copy/paste the code from the `seed.sql` file to seed your d
 Submit an issue with any ideas about this project! If you do, please be cordial and kind. There is enough nastiness in the world today.
 
 Pull requests are welcome as well!
-

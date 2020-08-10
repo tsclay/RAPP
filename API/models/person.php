@@ -1,18 +1,18 @@
 <?php
-require_once '../../vendor/autoload.php';
+
 // Switch these depending on whether in development or production
 // $dbconn = pg_connect('host=localhost dbname=contacts');
 // $dbconn = pg_connect(getenv("DATABASE_URL"));
 
-$dotenv = Dotenv\Dotenv::createImmutable(__DIR__, '../../.env');
-$dotenv->load();
-
-$db = parse_url($_SERVER['DATABASE_URL']);
-$db["path"] = ltrim($db["path"], "/");
-
 if (getenv("DATABASE_URL")) {
   $dbconn = pg_connect(getenv("DATABASE_URL"));
 } else {
+  require_once '../../vendor/autoload.php';
+  $dotenv = Dotenv\Dotenv::createImmutable(__DIR__, '../../.env');
+  $dotenv->load();
+
+  $db = parse_url($_SERVER['DATABASE_URL']);
+  $db["path"] = ltrim($db["path"], "/");
   $dbconn = pg_connect("host={$db["host"]} dbname={$db["path"]} port={$db["port"]} user={$db["user"]} password={$db["pass"]}");
 }
 

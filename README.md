@@ -15,6 +15,8 @@ See a deployment of this sample app [here](https://sample-rapp.herokuapp.com/).
 
 ## TL;DR Setup
 
+One day, this will be automated.
+
 ```bash
 git clone https://github.com/tsclay/RAPP.git
 cd RAPP/

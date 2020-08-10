@@ -5,6 +5,7 @@
     }
   },
   "require": {
-    "php": "7.4.2"
+    "php": "7.4.2",
+    "vlucas/phpdotenv": "^5.1"
   }
 }

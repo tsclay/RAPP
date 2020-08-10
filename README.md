@@ -7,13 +7,13 @@ This is a template for a project using the following tech stack:
 - PostgreSQL for database
 - PHP for server language
 
-See a deployment of this sample app [here](https://sample-rapp.herokuapp.com/).
+This guide will walkthrough the setup process and deploying to Heroku. See a deployment of this sample app on Heroku [here](https://sample-rapp.herokuapp.com/).
 
 <br>
 
 ## ⏩ TL;DR Setup ⏩
 
-One day, this will be automated.
+_I wonder if this can be automated..._
 
 ```bash
 git clone https://github.com/tsclay/RAPP.git
@@ -43,7 +43,7 @@ Open `localhost:3000` and off you go! 🚀
 
 ## 🎬 Getting Started 🎬
 
-In your terminal, navigate to where you would like the project to live, and type the following commands:
+In your terminal, navigate to where you want to store the project, and type the following commands:
 
 ```bash
 git clone https://github.com/tsclay/RAPP.git
@@ -52,6 +52,13 @@ npm i
 composer install
 echo "DATABASE_URL=postgresql://rapp:reactPHP@localhost:5432/contacts" > .env
 ```
+
+Four files of note. These will be discussed later.
+
+- `package.json`
+- `composer.json`
+- `.env`
+- `Procfile`
 
 <br>
 
@@ -88,7 +95,7 @@ This also created a user named `rapp` with a password of `reactPHP`. This will b
 
 Go to your MAMP preferences and change the directory for the server to the public directory inside the project root.
 
-<img src="./assets/MAMP.gif" alt="Whoops..." style="width: 700px; height: auto; display: block; margin: 0 auto;">
+<img src="https://i.imgur.com/NkPRGPE.gif" alt="Whoops..." style="width: 700px; height: auto; display: block; margin: 0 auto;">
 
 <br>
 
@@ -102,7 +109,7 @@ npm run start
 
 Upon success, your browser should load the localhost for the server. It should look something like this:
 
-<img src="./assets/hello2.png" alt="Whoops..." style="width: 700px; height: auto; display: block; margin: 0 auto;">
+<img src="https://i.imgur.com/NtdB7BN.png" alt="Whoops..." style="width: 700px; height: auto; display: block; margin: 0 auto;">
 
 <br>
 
@@ -116,7 +123,7 @@ Because of this, our API routes for AJAX requests need to change depending on th
 
 ### Check out the index.js file
 
-<img src="./assets/index.js.png" alt="Whoops..." style="width: 700px; height: auto; display: block; margin: 0 auto;">
+<img src="https://i.imgur.com/kLAiPpG.png" alt="Whoops..." style="width: 700px; height: auto; display: block; margin: 0 auto;">
 
 <br>
 
@@ -172,7 +179,7 @@ Assuming you have a Heroku account, Heroku CLI, and XP with deploying to Heroku,
 
 Change the `ENV` variable in `index.js` to something other than `'dev'`. Run `npm run build` to get the optimized bundle of code that will be used on the live site. The resulting build directory will look like this:
 
-<img src="./assets/build_dir.png" style="display: block; margin: 0 auto;">
+<img src="https://i.imgur.com/rW7Tal8.png" style="display: block; margin: 0 auto;">
 
 ### The PHP side
 
@@ -212,7 +219,7 @@ Brief sidebar: Take a look at the `composer.json` file:
 
 Three things about this file:
 
-1. **You must have this file to deploy a PHP app to Heroku**, even if it is blank. The presence of this file in your root is enough to tell Heroku you intend to use PHP. Otherwise, Heroku will assume Node since there is a `package.json` file present.
+1. **You must have this file to deploy a PHP app to Heroku**, even if it is blank. The `Procfile` and `composer.json` tell Heroku that this is a PHP app that needs an Apache server. Otherwise, Heroku will assume Node since there is a `package.json` file present.
 2. You can change which version of PHP you wish to use. _Change this with caution._
 3. The phpdotenv library is only needed when were working locally. Once we push to Heroku, we don't need it, as Heroku will give our app the `DATABASE_URL`.
 
@@ -234,7 +241,7 @@ The only thing left to do at this point is setup the add-on database, which you 
 
 Check the following GIF on how to get that command:
 
-<img src="./assets/heroku.gif" alt="Whoops..." style="width: 700px; height: 600px; display: block; margin: 0 auto;">
+<img src="https://i.imgur.com/bzGYV8I.gif" alt="Whoops..." style="width: 700px; height: 600px; display: block; margin: 0 auto;">
 
 <br>
 

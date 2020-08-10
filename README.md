@@ -34,6 +34,7 @@ postgres -D /usr/local/var/postgres/
 In a new tab, still in `RAPP` directory:
 
 ```bash
+psql -f API/models/seed.sql
 npm run start
 ```
 
@@ -119,7 +120,7 @@ Our front-end and back-end will relate to each other differently between develop
 
 In development, the React app lives on the dev server `localhost:3000` that we started with the `npm run start` command, and our PHP API lives on the Apache server `localhost:8888`. In production, the Apache server will host both sides.
 
-Because of this, our API routes for AJAX requests need to change depending on the environment. We could configure an env file, but this is more work needed for only one API.
+Because of this, our API routes for AJAX requests need to change depending on the environment.
 
 ### Check out the index.js file
 
@@ -127,7 +128,7 @@ Because of this, our API routes for AJAX requests need to change depending on th
 
 <br>
 
-Lines 8-19 handle our environment switch. When you're ready to deploy the app, just change the value of `ENV` to be `'prod'`. If you're wondering why not use a `.env` file for this, refer to this [Stack Overflow answer](https://stackoverflow.com/questions/42182577/is-it-possible-to-use-dotenv-in-a-react-project) for why we can't use `dotenv` with React. While this may not be the most elegant solution, it works, and it's simple.
+Lines 8-19 handle our environment switch. When you're ready to deploy the app, just change the value of `ENV` to be `'prod'`. If you're wondering why not use `.env` file for this, refer to this [Stack Overflow answer](https://stackoverflow.com/questions/42182577/is-it-possible-to-use-dotenv-in-a-react-project) for why we can't use `dotenv` with React. While this may not be the most elegant solution, it works, and it's simple.
 
 ### PHP this or that
 

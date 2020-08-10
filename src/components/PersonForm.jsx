@@ -11,6 +11,7 @@ export default class PersonForm extends React.Component {
   }
 
   componentDidMount = (event) => {
+    console.log('api', this.API_URL)
     axios.get(this.API_URL).then((response) => {
       this.setState({
         people: response.data,

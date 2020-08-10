@@ -7,7 +7,7 @@ This is a template for a project using the following tech stack:
 - PostgreSQL for database
 - PHP for server language
 
-This guide will walkthrough the setup process and deploying to Heroku. See a deployment of this sample app on Heroku [here](https://sample-rapp.herokuapp.com/).
+This guide will walkthrough the setup process and deploying to Heroku. This setup guide will use the source code as is. See a deployment of this sample app on Heroku [here](https://sample-rapp.herokuapp.com/).
 
 <br>
 
@@ -185,9 +185,7 @@ Refer to the Heroku docs on [connecting to a PostgreSQL database in PHP](https:/
 
 ## 😎 Customizing 😎
 
-Other than the necessary bits, change what you need! You can scrap the React components in this project and make your own. If you want to use functional components with React hooks, by all means, have at it!
-
-The code in the API directory? Scrap it too! As long as you understand how to use React and how to setup the back-end with PHP, :thumbsup:.
+Other than the necessary bits, change what you need! You can scrap the React components and PHP classes in this project and make your own. As long as you understand how to use React and how to setup the back-end with PHP, :thumbsup:.
 
 Ultimately, you can focus on functionality, UI, UX, and security without worrying about deployment.
 

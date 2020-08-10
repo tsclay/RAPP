@@ -37,6 +37,7 @@ $: psql -f API/models/seed.sql
 <br>
 
 ## 📡 Pointing the MAMP server 📡
+
 Go to your MAMP preferences and change the directory for the server to the public directory inside the project root.
 
 <img src="./assets/MAMP.gif" alt="Whoops..." style="width: 700px; height: auto; display: block; margin: 0 auto;">
@@ -71,7 +72,7 @@ Because of this, our API routes for AJAX requests need to change depending on th
 
 <br>
 
-Lines 8-19 handle our environment switch. When you're ready to deploy the app, just change the value of `ENV` to be `'prod'`. Again, the reason for this is that the Apache server will host both the React app that the client receives and the API/database combo for our full CRUD operations.
+Lines 8-19 handle our environment switch. When you're ready to deploy the app, just change the value of `ENV` to be `'prod'`. If you're wondering why not use a `.env` file for this, refer to this [Stack Overflow answer](https://stackoverflow.com/questions/42182577/is-it-possible-to-use-dotenv-in-a-react-project) for why we can't use `dotenv` with React. While this may not be the most elegant solution, it works, and it's simple.
 
 ### PHP this or that
 
@@ -117,7 +118,7 @@ Ultimately, you can focus on functionality, UI, UX, and security without worryin
 
 The [sample app](https://sample-rapp.herokuapp.com/) was deployed using Heroku, so the following will refer to that. So, if you prefer a different hosting service, make sure to read those docs! 🤓
 
-Assuming you have a Heroku account, Heroku CLI, and XP with deploying to Heroku, set up a new app, add the heroku remote to your git urls, and add a PostgreSQL add-on for your database. 
+Assuming you have a Heroku account, Heroku CLI, and XP with deploying to Heroku, set up a new app, add the heroku remote to your git urls, and add a PostgreSQL add-on for your database.
 
 ### The React side
 
@@ -164,12 +165,12 @@ Brief sidebar: Take a look at the `composer.json` file:
 Three things about this file:
 
 1. **You must have this file to deploy a PHP app to Heroku**, even if it is blank. The presence of this file in your root is enough to tell Heroku you intend to use PHP. Otherwise, Heroku will assume Node since there is a `package.json` file present.
-2. You can change which version of PHP you wish to use. *Change this with caution.*
+2. You can change which version of PHP you wish to use. _Change this with caution._
 3. The phpdotenv library is only needed when were working locally. Once we push to Heroku, we don't need it, as Heroku will give our app the `DATABASE_URL`.
 
-Run ```composer install``` from the project root in your terminal. This will create a `vendor` directory for your project, indicating that it worked. You won't need this in deployment, as Heroku will install one for you. It is already included in the `gitignore`.
+Run `composer install` from the project root in your terminal. This will create a `vendor` directory for your project, indicating that it worked. You won't need this in deployment, as Heroku will install one for you. It is already included in the `gitignore`.
 
-  - If you change the PHP version in the `composer.json` file, delete the `vendor` directory and re-run ```composer update```.
+- If you change the PHP version in the `composer.json` file, delete the `vendor` directory and re-run `composer update`.
 
 Deploy to Heroku!
 
@@ -181,7 +182,7 @@ git push heroku master
 
 ### Database
 
-The only thing left to do at this point is setup the add-on database, which you can do from your terminal! All you need is the command that opens the `psql` shell for the cloud database. 
+The only thing left to do at this point is setup the add-on database, which you can do from your terminal! All you need is the command that opens the `psql` shell for the cloud database.
 
 Check the following GIF on how to get that command:
 
@@ -204,33 +205,33 @@ INSERT INTO people (name, age) VALUES
 
 <br>
 
-## 🤔 Why use this? 🤔 
+## 🤔 Why use this? 🤔
 
-####   TL;DR: I believe using this template project will teach and reinforce concepts of full-stack development. Framework or no framework, apps are as secure as the developer makes them.
- 
- *Why do this when one could use Laravel which offers React front-end scaffolding?*
+#### TL;DR: I believe using this template project will teach and reinforce concepts of full-stack development. Framework or no framework, apps are as secure as the developer makes them.
 
- Laravel is robust, intuitive, and easy-to-use out of the box. However, it comes with some pain-points:
+_Why do this when one could use Laravel which offers React front-end scaffolding?_
 
-  - **Time required to learn it.** If you visit the Laracasts site for Laravel, you'll number a large store of videos on using Laravel. Visit Laravel's site, and you'll find extensive and well-written documentation. While this is exciting, it shows that one could spend months learning the "ins and outs" of the framework.
+Laravel is robust, intuitive, and easy-to-use out of the box. However, it comes with some pain-points:
 
-  - **Setting up and configuring a Laravel app** takes as much time as it does to create your app – sometimes more if you encounter errors during this phase.
+- **Time required to learn it.** If you visit the Laracasts site for Laravel, you'll number a large store of videos on using Laravel. Visit Laravel's site, and you'll find extensive and well-written documentation. While this is exciting, it shows that one could spend months learning the "ins and outs" of the framework.
 
-  - **Are you using authentication/authorization in your app?** When you need to nail a picture to a wall, a hammer will do. I hope that metaphor makes sense.
+- **Setting up and configuring a Laravel app** takes as much time as it does to create your app – sometimes more if you encounter errors during this phase.
 
-  - **Laravel is secure by default when it comes to POST requests.** If your POST request doesn't include a CSRF token, then your request fails. Meaning, setting up POST requests in your forms require more work, especially when you're using React as your front-end instead of Blade templates.
+- **Are you using authentication/authorization in your app?** When you need to nail a picture to a wall, a hammer will do. I hope that metaphor makes sense.
 
-  *Is security not important?*
+- **Laravel is secure by default when it comes to POST requests.** If your POST request doesn't include a CSRF token, then your request fails. Meaning, setting up POST requests in your forms require more work, especially when you're using React as your front-end instead of Blade templates.
 
-  Security is important. This template project can be as secure as you make it. It is possible to secure an app without something like Laravel or Django. If you work with Express and Node, this is something you'd have to do anyway. Express doesn't protect your site from CSRF and XSS by default. If you want security out of the box, then I recommend researching Laravel or Django.
+_Is security not important?_
 
-  *What's the gain of using this approach then?*
+Security is important. This template project can be as secure as you make it. It is possible to secure an app without something like Laravel or Django. If you work with Express and Node, this is something you'd have to do anyway. Express doesn't protect your site from CSRF and XSS by default. If you want security out of the box, then I recommend researching Laravel or Django.
 
-  I believe there are two gains to this approach.
-  
-  1. Learning how to write front-end and back-end code that interacts sensibly with each other. If you're familiar with using Node.js and Express, you'll recall that Express is unopinionated on what your sever needs to do. Again, it can be as secure as you want it to be. A framework such as Laravel is opinionated about elements such as authentication/authorization and database queries.
+_What's the gain of using this approach then?_
 
-  2. The skills and insights taken from working with this can easily transfer to working with a framework such as Laravel. Much can be learned by securing your app without a framework doing it all for you. Those lessons will then provide insights as to why a given framework operates under certain opinions.
+I believe there are two gains to this approach.
+
+1. Learning how to write front-end and back-end code that interacts sensibly with each other. If you're familiar with using Node.js and Express, you'll recall that Express is unopinionated on what your sever needs to do. Again, it can be as secure as you want it to be. A framework such as Laravel is opinionated about elements such as authentication/authorization and database queries.
+
+2. The skills and insights taken from working with this can easily transfer to working with a framework such as Laravel. Much can be learned by securing your app without a framework doing it all for you. Those lessons will then provide insights as to why a given framework operates under certain opinions.
 
 <br>
 

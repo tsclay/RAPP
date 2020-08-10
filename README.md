@@ -13,14 +13,44 @@ See a deployment of this sample app [here](https://sample-rapp.herokuapp.com/).
 
 <br>
 
+## TL;DR Setup
+
+```bash
+git clone https://github.com/tsclay/RAPP.git
+cd RAPP/
+npm i
+composer install
+echo "DATABASE_URL=postgresql://rapp:reactPHP@localhost:5432/contacts" > .env
+```
+
+Point your MAMP server to the `RAPP` directory at the root, no sub-folder.
+
+In a new tab, still in `RAPP` directory:
+
+```bash
+postgres -D /usr/local/var/postgres/
+```
+
+In a new tab, still in `RAPP` directory:
+
+```bash
+npm run start
+```
+
+Open `localhost:3000` and off you go! 🚀
+
+<br>
+
 ## Getting Started
 
 In your terminal, navigate to where you would like the project to live, and type the following commands:
 
 ```bash
 git clone https://github.com/tsclay/RAPP.git
+cd RAPP/
 npm i
 composer install
+echo "DATABASE_URL=postgresql://rapp:reactPHP@localhost:5432/contacts" > .env
 ```
 
 <br>
@@ -225,29 +255,29 @@ INSERT INTO people (name, age) VALUES
 
 ## 🤔 Why use this? 🤔
 
-#### TL;DR: I believe using this template project will teach and reinforce concepts of full-stack development without deployment being a roadblock. Framework or no framework, apps are as secure as the developer makes them.
+#### TL;DR: Making a full-stack app from scratch is freeing, educational, and fun. Deployment and environment bugs are not fun, but this project has that covered. Framework or no framework, apps are as secure as the developer makes them.
 
 _Why do this when one could use Laravel which offers React front-end scaffolding?_
 
-Laravel is robust, intuitive, and easy-to-use out of the box. However, it comes with some pain-points:
+Laravel is robust, intuitive, and secure out of the box. However, it comes with some pain-points:
 
 - **Time required to learn it.** If you visit the Laracasts site for Laravel, you'll number a large store of videos on using Laravel. Visit Laravel's site, and you'll find extensive and well-written documentation. While this is exciting, it shows that one could spend months learning the "ins and outs" of the framework.
 
 - **Setting up and configuring a Laravel app** takes as much time as it does to create your app – sometimes more if you encounter errors during this phase.
 
-- **Are you using authentication/authorization in your app?** When you need to nail a picture to a wall, a hammer will do. I hope that metaphor makes sense.
+- **Are you using authentication/authorization in your app?** When you need to nail a picture to a wall, a hammer will do. I hope that expression makes sense.
 
 - **Laravel is secure by default when it comes to POST requests.** If your POST request doesn't include a CSRF token, then your request fails. Meaning, setting up POST requests in your forms require more work, especially when you're using React as your front-end instead of Blade templates.
 
 _Is security not important?_
 
-Security is important. This template project can be as secure as you make it. It is possible to secure an app without something like Laravel or Django. If you work with Express and Node, this is something you'd have to do anyway. Express doesn't protect your site from CSRF and XSS by default. If you want security out of the box, then I recommend researching Laravel or Django.
+Security is important. This template project can be as secure as you make it. It is possible to secure an app without something like Laravel or Django. If you work with Express and Node, this is something you'd have to do anyway. Express doesn't protect your site from CSRF and XSS by default. If you want security features out of the box, then I recommend researching Laravel or Django.
 
 _What's the gain of using this approach then?_
 
 I believe there are two gains to this approach.
 
-1. Learning how to write front-end and back-end code that interacts sensibly with each other. If you're familiar with using Node.js and Express, you'll recall that Express is unopinionated on what your sever needs to do. Again, it can be as secure as you want it to be. A framework such as Laravel is opinionated about elements such as authentication/authorization and database queries.
+1. Learning how to write front-end and back-end code that interacts sensibly with each other while having a lot of freedom to do so. Again, it can be as secure as you want it to be. An opinionated framework will direct you to code a certain way from the start. While that isn't bad, starting from scratch can be fun and educational.
 
 2. The skills and insights taken from working with this can easily transfer to working with a framework such as Laravel. Much can be learned by securing your app without a framework doing it all for you. Those lessons will then provide insights as to why a given framework operates under certain opinions.
 

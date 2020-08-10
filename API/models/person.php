@@ -10,7 +10,7 @@ $dotenv->load();
 $db = parse_url($_SERVER['DATABASE_URL']);
 $db["path"] = ltrim($db["path"], "/");
 
-$dbconn = pg_connect("host={$db["host"]} dbname={$db["path"]} port={$db["port"]} user={$db["user"]} password={$db["pass"]}");
+$dbconn = pg_connect("host={$db["host"]} dbname={$db["path"]} port={$db["port"]} user={$db["user"]} password={$db["pass"]}") || pg_connect(getenv("DATABASE_URL"));;
 
 // Person class is a factory for creating new people
 class Person

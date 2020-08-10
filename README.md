@@ -73,7 +73,7 @@ Because of this, our API routes for AJAX requests need to change depending on th
 
 Lines 8-19 handle our environment switch. When you're ready to deploy the app, just change the value of `ENV` to be `'prod'`. Again, the reason for this is that the Apache server will host both the React app that the client receives and the API/database combo for our full CRUD operations.
 
-<hr>
+### PHP this or that
 
 On the PHP side, the only bit of environment dependent code is inside `API/models/person.php`.
 
@@ -92,6 +92,8 @@ if (getenv("DATABASE_URL")) {
   $dbconn = pg_connect("host={$db["host"]} dbname={$db["path"]} port={$db["port"]} user={$db["user"]} password={$db["pass"]}");
 }
 ```
+
+This bit of code **requires** a `.env` file in the root of the project. Refer to the `.env.example` file in the project for an environment variable you can use in development.
 
 While in development, the phpdotenv library will pull in your `.env` file and grab `DATABASE_URL` to use. This means you only need to change the database info in your `.env` file. On Heroku, the `getenv()` method will work. Btw, if you're wondering why not use phpdotenv for both, it doesn't play nice with `getenv()`. Refer to [this issue](https://github.com/vlucas/phpdotenv/issues/446) in the phpdotenv repo.
 

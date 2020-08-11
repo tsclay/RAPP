@@ -171,7 +171,7 @@ axios.get('http://localhost:8888/people').then((response) => {
 });
 ```
 
-If your MAMP server is not on port `8888`, simply change the `proxy` in `package.json`. Easy.
+If your MAMP server is not on port `8888`, simply change the `proxy` in `package.json`. This will make the transition from development to production much easier. 🙂
 
 ### PHP this or that
 

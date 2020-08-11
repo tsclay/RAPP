@@ -308,7 +308,7 @@ INSERT INTO people (name, age) VALUES
 
 ## 🤔 Why use this? 🤔
 
-I believe there are two benefits to this approach.
+I believe there are at least three benefits to this approach.
 
 1. Good practice writing full-stack code from scratch without the pain-points of deployment. 
 

@@ -9,6 +9,7 @@ This is a template for a project using the following tech stack:
 
 This guide will walkthrough the setup process and deploying to Heroku. This setup guide will use the source code as is. See a deployment of this sample app on Heroku [here](https://sample-rapp.herokuapp.com/).
 
+
 <br>
 
 ## Table of Contents
@@ -134,6 +135,9 @@ npm run start
 Upon success, your browser should load the localhost for the server. It should look something like this:
 
 <img src="https://i.imgur.com/NtdB7BN.png" alt="Whoops..." style="width: 700px; height: auto; display: block; margin: 0 auto;">
+
+
+The AJAX requests in this React app are handled through the Axios library. You may ditch this for something different if you like.
 
 <br>
 

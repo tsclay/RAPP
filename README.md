@@ -145,13 +145,33 @@ In development, the React app lives on the dev server `localhost:3000` that we s
 
 Because of this, our API routes for AJAX requests need to change depending on the environment.
 
-### Check out the index.js file
+### Check out the package.json file
 
-<img src="https://i.imgur.com/kLAiPpG.png" alt="Whoops..." style="width: 700px; height: auto; display: block; margin: 0 auto;">
+```json
+  "proxy": "http://localhost:8888",
+```
 
-<br>
+This line of code sets up a proxy through which our AJAX requests can go if they aren't located on the dev server. In this case, we want our AJAX requests to go to the MAMP server.
 
-Lines 8-19 handle our environment switch. When you're ready to deploy the app, just change the value of `ENV` to be `'prod'`. If you're wondering why not use `.env` file for this, refer to this [Stack Overflow answer](https://stackoverflow.com/questions/42182577/is-it-possible-to-use-dotenv-in-a-react-project) for why we can't use `dotenv` with React. While this may not be the most elegant solution, it works, and it's simple.
+This means that we can do this in React:
+
+```jsx
+axios.get('/people').then((response) => {
+  this.setState({
+  people: response.data,
+});
+```
+
+And not this:
+
+```jsx
+axios.get('http://localhost:8888/people').then((response) => {
+  this.setState({
+  people: response.data,
+});
+```
+
+If your MAMP server is not on port `8888`, simply change the `proxy` in `package.json`. Easy.
 
 ### PHP this or that
 

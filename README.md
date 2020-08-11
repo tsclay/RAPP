@@ -308,36 +308,18 @@ INSERT INTO people (name, age) VALUES
 
 ## 🤔 Why use this? 🤔
 
-#### TL;DR: Making a full-stack app from scratch is freeing, educational, and fun. Deployment and environment bugs are not fun, but this project has that covered. Framework or no framework, apps are as secure as the developer makes them.
+I believe there are two benefits to this approach.
 
-_Why do this when one could use Laravel which offers React front-end scaffolding?_
+1. Good practice writing full-stack code from scratch without the pain-points of deployment. 
 
-Laravel is robust, intuitive, and secure out of the box. However, it comes with some pain-points:
+2. The back-end XP transfers to working with an opinionated back-end framework. 
 
-- **Time required to learn it.** If you visit the Laracasts site for Laravel, you'll number a large store of videos on using Laravel. Visit Laravel's site, and you'll find extensive and well-written documentation. While this is exciting, it shows that one could spend months learning the "ins and outs" of the framework.
-
-- **Setting up and configuring a Laravel app** takes as much time as it does to create your app – sometimes more if you encounter errors during this phase.
-
-- **Are you using authentication/authorization in your app?** When you need to nail a picture to a wall, a hammer will do. I hope that expression makes sense.
-
-- **Laravel is secure by default when it comes to POST requests.** If your POST request doesn't include a CSRF token, then your request fails. Meaning, setting up POST requests in your forms require more work, especially when you're using React as your front-end instead of Blade templates.
-
-_Is security not important?_
-
-Security is important. This template project can be as secure as you make it. It is possible to secure an app without something like Laravel or Django. If you work with Express and Node, this is something you'd have to do anyway. Express doesn't protect your site from CSRF and XSS by default. If you want security features out of the box, then I recommend researching Laravel or Django.
-
-_What's the gain of using this approach then?_
-
-I believe there are two gains to this approach.
-
-1. Learning how to write front-end and back-end code that interacts sensibly with each other while having a lot of freedom to do so. Again, it can be as secure as you want it to be. An opinionated framework will direct you to code a certain way from the start. While that isn't bad, starting from scratch can be fun and educational.
-
-2. The skills and insights taken from working with this can easily transfer to working with a framework such as Laravel. Much can be learned by securing your app without a framework doing it all for you. Those lessons will then provide insights as to why a given framework operates under certain opinions.
+3. Get started with code quickly.
 
 <br>
 
 ## ❓ Questions, Quandaries, and Queries ❓
 
-Submit an issue with any ideas about this project! If you do, please be cordial and kind. There is enough nastiness in the world today.
+Submit an issue with any ideas about this project!
 
 Pull requests are welcome as well!

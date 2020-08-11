@@ -20,7 +20,7 @@ This guide will walkthrough the setup process and deploying to Heroku. This setu
    * [Pointing the MAMP server](#-pointing-the-mamp-server-)
    * [Setup React](#-setup-react-)
    * [Caring for the Environment](#-caring-for-the-environment-)
-       * [React](#check-out-the-indexjs-file)
+       * [React](#check-out-the-package.json-file)
        * [PHP](#php-this-or-that)
    * [Customizing](#-customizing-)
    * [Deploying your App](#-deploying-your-app-)

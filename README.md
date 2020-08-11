@@ -20,7 +20,7 @@ This guide will walkthrough the setup process and deploying to Heroku. This setu
    * [Pointing the MAMP server](#-pointing-the-mamp-server-)
    * [Setup React](#-setup-react-)
    * [Caring for the Environment](#-caring-for-the-environment-)
-       * [React](#check-out-the-package.json-file)
+       * [React](#packagejson)
        * [PHP](#php-this-or-that)
    * [Customizing](#-customizing-)
    * [Deploying your App](#-deploying-your-app-)
@@ -145,7 +145,7 @@ In development, the React app lives on the dev server `localhost:3000` that we s
 
 Because of this, our API routes for AJAX requests need to change depending on the environment.
 
-### Check out the package.json file
+### Package.json
 
 ```json
   "proxy": "http://localhost:8888",

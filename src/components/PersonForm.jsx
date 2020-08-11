@@ -9,7 +9,7 @@ export default class PersonForm extends React.Component {
     };
   }
 
-  componentDidMount = (event) => {
+  componentDidMount = (e) => {
     axios.get('/people').then((response) => {
       this.setState({
         people: response.data,
@@ -17,8 +17,8 @@ export default class PersonForm extends React.Component {
     });
   };
 
-  createPerson = (event) => {
-    event.preventDefault();
+  createPerson = (e) => {
+    e.preventDefault();
     axios
       .post('/people', {
         name: this.state.newPersonName,
@@ -48,27 +48,25 @@ export default class PersonForm extends React.Component {
     this.setState({ people: response.data });
   };
 
-  changeNewPersonName = (event) => {
+  changeNewPerson = (e) => {
+    e.persist()
+    console.log(e.target)
+    const key = e.target.getAttribute('id')
+    this.setState((state) => {
+      state[key] = e.target.value
+    }
+    );
+  };
+
+  updatePersonAge = (e) => {
     this.setState({
-      newPersonName: event.target.value,
+      updatePersonAge: e.target.value,
     });
   };
 
-  changeNewPersonAge = (event) => {
+  updatePersonName = (e) => {
     this.setState({
-      newPersonAge: event.target.value,
-    });
-  };
-
-  updatePersonAge = (event) => {
-    this.setState({
-      updatePersonAge: event.target.value,
-    });
-  };
-
-  updatePersonName = (event) => {
-    this.setState({
-      updatePersonName: event.target.value,
+      updatePersonName: e.target.value,
     });
   };
 
@@ -78,13 +76,15 @@ export default class PersonForm extends React.Component {
         <h2>Add new person</h2>
         <form onSubmit={this.createPerson}>
           <input
-            onKeyUp={this.changeNewPersonName}
+            id="newPersonName"
+            onKeyUp={this.changeNewPerson}
             type="text"
             placeholder="name"
           />
           <br />
           <input
-            onKeyUp={this.changeNewPersonAge}
+            id="newPersonAge"
+            onKeyUp={this.changeNewPerson}
             type="number"
             placeholder="age"
           />

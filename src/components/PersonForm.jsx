@@ -136,7 +136,7 @@ export default class PersonForm extends React.Component {
                   </form>
                 ) : (
                   <p className="contact-details">
-                    {person.name}:{person.age}
+                    {person.name}: {person.age}
                   </p>
                 )}
                 <button type="button" value={person.id} onClick={deletePerson}>

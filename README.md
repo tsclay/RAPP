@@ -28,7 +28,7 @@ This guide will walkthrough the setup process and deploying to Heroku. This setu
       * [Connecting React and PHP](#connecting-react-and-php)
         * [The PHP side](#the-php-side)
         * [About Composer.json](#about-composerjson)
-   * [Database](#-database-add-on-)
+      * [Database](#database-add-on-)
    * [Why use this?](#-why-use-this-)
    * [Questions?](#-questions-quandaries-and-queries-)
 <!--te-->
@@ -281,8 +281,6 @@ Three things about this file:
 When we ran `composer install`, this created a `vendor` directory for the project. Since Heroku will install one for you when you deploy, is is included in the `gitignore`.
 
 - If you change the PHP version in the `composer.json` file, delete the `vendor` directory and run `composer update`.
-
-<br>
 
 ### 💻 Database Add-On 💻
 

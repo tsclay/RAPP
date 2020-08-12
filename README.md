@@ -28,7 +28,7 @@ This guide will walkthrough the setup process and deploying to Heroku. This setu
       * [Connecting React and PHP](#connecting-react-and-php)
         * [The PHP side](#the-php-side)
         * [About Composer.json](#about-composerjson)
-      * [Database](#database-addon)
+      * [Database](#database-addon-)
    * [Why use this?](#-why-use-this-)
    * [Questions?](#-questions-quandaries-and-queries-)
 <!--te-->

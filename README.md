@@ -25,10 +25,10 @@ This guide will walkthrough the setup process and deploying to Heroku. This setu
        * [PHP](#php-this-or-that)
    * [Customizing](#-customizing-)
    * [Deploying your App](#-deploying-your-app-)
-       * [React](#the-react-side)
-       * [PHP](#the-php-side)
-       * [Composer.json](#composerjson)
-       * [Database](#-database-add-on-)
+      * [Connecting React and PHP](#connecting-react-and-php)
+        * [The PHP side](#the-php-side)
+        * [About Composer.json](#about-composerjson)
+   * [Database](#-database-add-on-)
    * [Why use this?](#-why-use-this-)
    * [Questions?](#-questions-quandaries-and-queries-)
 <!--te-->
@@ -221,17 +221,28 @@ The [sample app](https://sample-rapp.herokuapp.com/) was deployed using Heroku, 
 
 Assuming you have a Heroku account, Heroku CLI, and XP with deploying to Heroku, set up a new app, add the heroku remote to your git urls, and add a PostgreSQL add-on for your database.
 
-### The React side
+All we need to do is create an optimized React app and push to Heroku.
 
-Change the `ENV` variable in `index.js` to something other than `'dev'`. Run `npm run build` to get the optimized bundle of code that will be used on the live site. The resulting build directory will look like this:
+```bash
+npm run build
+git add .
+git commit -am 'please work'
+git push heroku master
+```
+
+### Connecting React and PHP
+
+The resulting build directory from `npm run build` will look like this:
 
 <img src="https://i.imgur.com/rW7Tal8.png" style="display: block; margin: 0 auto;">
 
-### The PHP side
+#### The PHP side
 
-The `index.html` will be our main route, and the JS and CSS files in the build directory will be loaded in that `index.html` file. The `.htaccess` file in the project root handles this.
+The `index.html` in `build` will be our main route, and the JS and CSS files will be loaded in that `index.html` file. The `.htaccess` file in the project root handles this.
 
-If you look inside the build HTML file, you'll find that the scripts have `static` as the first directory in the paths. This confuses our Apache server, which will attempt to find the `static` folder in the project root, not in `build`. To solve this, we tell the server to prepend `build` to those routes so that it doens't freak out. Notice that the "/" route will be last in the `.htaccess` file to prevent other routes being caught by this one.
+If you look inside that `index.html` file, you'll find that the script tags have `static` as the first directory in the paths. This confuses our Apache server, because it will attempt to find the `static` folder in the project root, not in `build`. 
+
+To solve this, we tell the server to prepend `build` to those routes so that it doens't freak out. Notice that the "/" route will be last in the `.htaccess` file to prevent other routes being caught by this one.
 
 ```Apache
 # For the js and css assets when using React in PRODUCTION
@@ -243,9 +254,7 @@ RewriteCond %{REQUEST_METHOD} ^GET$
 RewriteRule ^$ build/index.html
 ```
 
-### Composer.json
-
-Brief sidebar: Take a look at the `composer.json` file:
+#### About Composer.json
 
 ```json
 {
@@ -265,21 +274,15 @@ Brief sidebar: Take a look at the `composer.json` file:
 
 Three things about this file:
 
-1. **You must have this file to deploy a PHP app to Heroku**, even if it is blank. The `Procfile` and `composer.json` tell Heroku that this is a PHP app that needs an Apache server. Otherwise, Heroku will assume Node since there is a `package.json` file present.
+1. **This file must be present to deploy a PHP app to Heroku**, even if it is blank. The `Procfile` and `composer.json` tell Heroku that this is a PHP app that needs an Apache server. Otherwise, Heroku will assume Node since there is a `package.json` file present.
 2. You can change which version of PHP you wish to use. _Change this with caution._
 3. The phpdotenv library is only needed when were working locally. Once we push to Heroku, we don't need it, as Heroku will give our app the `DATABASE_URL`.
 
-Run `composer install` from the project root in your terminal. This will create a `vendor` directory for your project, indicating that it worked. You won't need this in deployment, as Heroku will install one for you. It is already included in the `gitignore`.
+When we ran `composer install`, this created a `vendor` directory for the project. Since Heroku will install one for you when you deploy, is is included in the `gitignore`.
 
-- If you change the PHP version in the `composer.json` file, delete the `vendor` directory and re-run `composer update`.
+- If you change the PHP version in the `composer.json` file, delete the `vendor` directory and run `composer update`.
 
-Deploy to Heroku!
-
-```bash
-git add .
-git commit -am 'please work'
-git push heroku master
-```
+<br>
 
 ### 💻 Database Add-On 💻
 
@@ -310,7 +313,7 @@ INSERT INTO people (name, age) VALUES
 
 I believe there are at least three benefits to this approach.
 
-1. Good practice writing full-stack code from scratch without the pain-points of deployment. 
+1. Good practice making a full-stack CRUD app from scratch without the pain-points of deployment. 
 
 2. The back-end XP transfers to working with an opinionated back-end framework. 
 

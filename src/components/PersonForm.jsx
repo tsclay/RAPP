@@ -1,90 +1,110 @@
-import React from "react";
-import axios from 'axios'
+import React from 'react';
+import axios from 'axios';
 
 export default class PersonForm extends React.Component {
   constructor() {
     super();
     this.state = {
       people: [],
+      showUpdateForm: ''
     };
   }
 
-  componentDidMount = (e) => {
+  componentDidMount = () => {
     axios.get('/people').then((response) => {
       this.setState({
-        people: response.data,
+        people: response.data
       });
     });
   };
 
+  toggleUpdateForm = (person) => {
+    const { showUpdateForm } = this.state;
+    if (showUpdateForm === '' || showUpdateForm !== person.id) {
+      this.setState({
+        showUpdateForm: person.id,
+        updatePersonAge: person.age,
+        updatePersonName: person.name
+      });
+    } else {
+      this.setState({
+        showUpdateForm: ''
+      });
+    }
+  };
+
   createPerson = (e) => {
     e.preventDefault();
+    const { newPersonAge, newPersonName } = this.state;
     axios
       .post('/people', {
-        name: this.state.newPersonName,
-        age: this.state.newPersonAge,
+        name: newPersonName,
+        age: newPersonAge
       })
       .then((response) => {
-        console.log(response);
         this.setState({
-          people: response.data,
+          people: response.data
         });
       });
   };
 
   updatePerson = async (e) => {
     e.preventDefault();
-    const id = e.target.getAttribute("id");
+    const { updatePersonAge, updatePersonName } = this.state;
+    const id = e.target.getAttribute('id');
     const response = await axios.put(`/people/${id}`, {
-      name: this.state.updatePersonName,
-      age: this.state.updatePersonAge,
+      name: updatePersonName,
+      age: updatePersonAge
     });
-    this.setState({ people: response.data });
+    this.setState({ people: response.data, showUpdateForm: '' });
   };
 
   deletePerson = async (e) => {
     const response = await axios.delete(`/people/${e.target.value}`);
-    console.log(response.data);
     this.setState({ people: response.data });
   };
 
   changeNewPerson = (e) => {
-    e.persist()
-    console.log(e.target)
-    const key = e.target.getAttribute('id')
+    e.persist();
+    const key = e.target.getAttribute('id');
     this.setState((state) => {
-      state[key] = e.target.value
-    }
-    );
-  };
-
-  updatePersonAge = (e) => {
-    this.setState({
-      updatePersonAge: e.target.value,
+      state[key] = e.target.value;
     });
   };
 
-  updatePersonName = (e) => {
-    this.setState({
-      updatePersonName: e.target.value,
+  changeExistingPerson = (e) => {
+    e.persist();
+    console.log('the state!', this.state);
+    const key = e.target.getAttribute('id');
+    this.setState((state) => {
+      state[key] = e.target.value;
     });
   };
 
   render = () => {
+    const { people, showUpdateForm } = this.state;
+    const {
+      createPerson,
+      changeNewPerson,
+      deletePerson,
+      updatePerson,
+      changeExistingPerson,
+      toggleUpdateForm
+    } = this;
     return (
       <div className="container">
         <h2>Add new person</h2>
-        <form onSubmit={this.createPerson}>
+        <form onSubmit={createPerson}>
           <input
             id="newPersonName"
-            onKeyUp={this.changeNewPerson}
+            onKeyUp={changeNewPerson}
             type="text"
             placeholder="name"
           />
           <br />
           <input
             id="newPersonAge"
-            onKeyUp={this.changeNewPerson}
+            onKeyUp={changeNewPerson}
             type="number"
             placeholder="age"
           />
@@ -92,31 +112,47 @@ export default class PersonForm extends React.Component {
           <button type="submit">CREATE</button>
         </form>
         <h2>Contact List</h2>
-        <ul>
-          {this.state.people.map((person) => {
+        <div className="container">
+          {people.map((person) => {
             return (
-              <li key={person.id}>
-                {person.name}: {person.age}
-                <button value={person.id} onClick={this.deletePerson}>
+              <div className="contacts" key={person.id}>
+                {showUpdateForm === person.id ? (
+                  <form id={person.id} onSubmit={updatePerson}>
+                    <input
+                      id="updatePersonName"
+                      onKeyUp={changeExistingPerson}
+                      type="text"
+                      placeholder="name"
+                      defaultValue={person.name}
+                    />
+                    <input
+                      id="updatePersonAge"
+                      onKeyUp={changeExistingPerson}
+                      type="text"
+                      placeholder="age"
+                      defaultValue={person.age}
+                    />
+                    <button type="submit">Confirm</button>
+                  </form>
+                ) : (
+                  <p className="contact-details">
+                    {person.name}:{person.age}
+                  </p>
+                )}
+                <button type="button" value={person.id} onClick={deletePerson}>
                   DELETE
                 </button>
-                <form id={person.id} onSubmit={this.updatePerson}>
-                  <input
-                    onKeyUp={this.updatePersonName}
-                    type="text"
-                    placeholder="name"
-                  />
-                  <input
-                    onKeyUp={this.updatePersonAge}
-                    type="text"
-                    placeholder="age"
-                  />
-                  <button type="submit">Change</button>
-                </form>
-              </li>
+                <button
+                  type="button"
+                  value={person.id}
+                  onClick={() => toggleUpdateForm(person)}
+                >
+                  CHANGE
+                </button>
+              </div>
             );
           })}
-        </ul>
+        </div>
       </div>
     );
   };

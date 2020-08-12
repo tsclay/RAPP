@@ -28,7 +28,7 @@ This guide will walkthrough the setup process and deploying to Heroku. This setu
       * [Connecting React and PHP](#connecting-react-and-php)
         * [The PHP side](#the-php-side)
         * [About Composer.json](#about-composerjson)
-      * [Database](#database-addon-)
+      * [Database](#-database-add-on-)
    * [Why use this?](#-why-use-this-)
    * [Questions?](#-questions-quandaries-and-queries-)
 <!--te-->
@@ -282,7 +282,7 @@ When we ran `composer install`, this created a `vendor` directory for the projec
 
 - If you change the PHP version in the `composer.json` file, delete the `vendor` directory and run `composer update`.
 
-### 💻 Database AddOn 💻
+### 💻 Database Add-On 💻
 
 The only thing left to do at this point is setup the add-on database, which you can do from your terminal! All you need is the command that opens the `psql` shell for the cloud database.
 

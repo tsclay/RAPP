@@ -15,6 +15,7 @@ This guide will walkthrough the setup process and deploying to Heroku. This setu
 ## Table of Contents
 
 <!--ts-->
+   * [Why use this?](#-why-use-this-)
    * [TL;DR Setup](https://github.com/tsclay/RAPP/#-tldr-setup)
    * [Getting Started](#-getting-started-)
    * [Database Setup](#-database-setup-)
@@ -29,9 +30,18 @@ This guide will walkthrough the setup process and deploying to Heroku. This setu
         * [The PHP side](#the-php-side)
         * [About Composer.json](#about-composerjson)
       * [Database](#-database-add-on-)
-   * [Why use this?](#-why-use-this-)
    * [Questions?](#-questions-quandaries-and-queries-)
 <!--te-->
+
+## 🤔 Why use this? 🤔
+
+I believe there are at least three benefits to this approach.
+
+1. Good practice making a full-stack CRUD app from scratch without the pain-points of deployment. 
+
+2. The back-end XP transfers to working with an opinionated back-end framework. 
+
+3. Get started with code quickly.
 
 <br>
 
@@ -304,18 +314,6 @@ INSERT INTO people (name, age) VALUES
 ('Jo', 18),
 ('Samantha', 25);
 ```
-
-<br>
-
-## 🤔 Why use this? 🤔
-
-I believe there are at least three benefits to this approach.
-
-1. Good practice making a full-stack CRUD app from scratch without the pain-points of deployment. 
-
-2. The back-end XP transfers to working with an opinionated back-end framework. 
-
-3. Get started with code quickly.
 
 <br>
 

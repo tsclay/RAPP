@@ -33,6 +33,8 @@ This guide will walkthrough the setup process and deploying to Heroku. This setu
    * [Questions?](#-questions-quandaries-and-queries-)
 <!--te-->
 
+<br>
+
 ## 🤔 Why use this? 🤔
 
 I believe there are at least three benefits to this approach.
